@@ -1,0 +1,54 @@
+{
+  "assignments": [
+    {
+      "courseId": 1,
+      "roomId": 101,
+      "startSlot": 0
+    },
+    {
+      "courseId": 2,
+      "roomId": 102,
+      "startSlot": 7
+    },
+    {
+      "courseId": 3,
+      "roomId": 102,
+      "startSlot": 0
+    },
+    {
+      "courseId": 4,
+      "roomId": 103,
+      "startSlot": 2
+    },
+    {
+      "courseId": 5,
+      "roomId": 101,
+      "startSlot": 5
+    },
+    {
+      "courseId": 6,
+      "roomId": 101,
+      "startSlot": 3
+    },
+    {
+      "courseId": 7,
+      "roomId": 102,
+      "startSlot": 2
+    }
+  ],
+  "score": 5,
+  "unmetSoftConstraints": [
+    {
+      "constraintType": "Prefer Mornings",
+      "description": "Course 2 is scheduled at slot 7, which is not in the morning. Morning starts at 6 am (slot 0) and ends at 12 pm (slot 6)"
+    },
+    {
+      "constraintType": "Avoid Back-to-Back Classes",
+      "description": "Instructor 1 has back-to-back classes: Course 1 (ends at slot 2) and Course 7 (starts at slot 2)."
+    },
+    {
+      "constraintType": "Avoid Back-to-Back Classes",
+      "description": "Instructor 2 has back-to-back classes: Course 3 (ends at slot 2) and Course 4 (starts at slot 2)."
+    }
+  ]
+}

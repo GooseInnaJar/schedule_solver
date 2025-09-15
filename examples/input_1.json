@@ -1,0 +1,82 @@
+{
+  "rooms": [
+    {
+      "id": 101,
+      "capacity": 50
+    },
+    {
+      "id": 102,
+      "capacity": 30
+    },
+    {
+      "id": 103,
+      "capacity": 30
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "instructorId": 1,
+      "durationSlots": 2,
+      "requiredCapacity": 40
+    },
+    {
+      "id": 2,
+      "instructorId": 1,
+      "durationSlots": 3,
+      "requiredCapacity": 25
+    },
+    {
+      "id": 3,
+      "instructorId": 2,
+      "durationSlots": 2,
+      "requiredCapacity": 28
+    },
+    {
+      "id": 4,
+      "instructorId": 2,
+      "durationSlots": 2,
+      "requiredCapacity": 20
+    },
+    {
+      "id": 5,
+      "instructorId": 2,
+      "durationSlots": 2,
+      "requiredCapacity": 40
+    },
+    {
+      "id": 6,
+      "instructorId": 3,
+      "durationSlots": 2,
+      "requiredCapacity": 40
+    },
+    {
+      "id": 7,
+      "instructorId": 1,
+      "durationSlots": 2,
+      "requiredCapacity": 20
+    }
+  ],
+  "instructors": [
+    {
+      "id": 1,
+      "unavailableSlots": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": 2,
+      "unavailableSlots": []
+    },
+    {
+      "id": 3,
+      "unavailableSlots": [
+        6,
+        7,
+        8
+      ]
+    }
+  ],
+  "totalTimeslots": 12
+}
