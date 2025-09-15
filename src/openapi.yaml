@@ -1,0 +1,250 @@
+openapi: 3.0.3
+info:
+  title: University Course Scheduling API
+  description: An API that accepts a set of rooms, courses, instructors, and constraints, and returns an optimized schedule.
+  version: 1.0.0
+servers:
+  - url: 127.0.0.1:8080
+    description: Production Server
+
+paths:
+  /v1/schedule/solve:
+    post:
+      tags:
+        - Scheduling
+      summary: Solve a course scheduling problem
+      description: |
+        Takes a list of rooms, courses, instructors, and the total number of available timeslots,
+        then returns an optimal schedule assignment. The solution includes the schedule, a score,
+        and a list of any soft constraints that were not met.
+      operationId: solveSchedule
+      requestBody:
+        description: The scheduling problem definition containing all required inputs.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchedulingInput'
+            example:
+              rooms:
+                - id: 101
+                  capacity: 50
+                - id: 102
+                  capacity: 30
+                - id: 103
+                  capacity: 30
+              courses:
+                - id: 1
+                  instructorId: 1
+                  durationSlots: 2
+                  requiredCapacity: 40
+                - id: 2
+                  instructorId: 1
+                  durationSlots: 3
+                  requiredCapacity: 25
+                - id: 3
+                  instructorId: 2
+                  durationSlots: 2
+                  requiredCapacity: 28
+              instructors:
+                - id: 1
+                  unavailableSlots: [4, 5]
+                - id: 2
+                  unavailableSlots: []
+                - id: 3
+                  unavailableSlots: [6, 7, 8]
+              totalTimeslots: 12
+      responses:
+        '200':
+          description: A successful solution was found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchedulingOutput'
+              example:
+                assignments:
+                  - courseId: 1
+                    roomId: 101
+                    startSlot: 0
+                  - courseId: 2
+                    roomId: 102
+                    startSlot: 7
+                  - courseId: 3
+                    roomId: 102
+                    startSlot: 0
+                  - courseId: 4
+                    roomId: 103
+                    startSlot: 2
+                score: 5
+                unmetSoftConstraints:
+                  - constraintType: "Prefer Mornings"
+                    description: "Course 2 is scheduled at slot 7, which is not in the morning. Morning starts at 6 am (slot 0) and ends at 12 pm (slot 6)"
+                  - constraintType: "Avoid Back-to-Back Classes"
+                    description: "Instructor 1 has back-to-back classes: Course 1 (ends at slot 2) and Course 7 (starts at slot 2)."
+        '400':
+          description: Bad Request. The input data is invalid or malformed.
+        '500':
+          description: Internal Server Error. The solver failed to produce a solution.
+
+components:
+  schemas:
+    # --- Request Schemas ---
+    SchedulingInput:
+      type: object
+      description: The complete input for the scheduling problem.
+      required:
+        - rooms
+        - courses
+        - instructors
+        - totalTimeslots
+      properties:
+        rooms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Room'
+        courses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Course'
+        instructors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Instructor'
+        totalTimeslots:
+          type: integer
+          format: uint32
+          description: The total number of consecutive time slots available for scheduling.
+          example: 12
+
+    Room:
+      type: object
+      description: Represents a physical room with a given capacity.
+      required:
+        - id
+        - capacity
+      properties:
+        id:
+          type: integer
+          format: uint32
+          description: Unique identifier for the room.
+          example: 101
+        capacity:
+          type: integer
+          format: uint32
+          description: The maximum number of students the room can hold.
+          example: 50
+
+    Course:
+      type: object
+      description: Represents a course to be scheduled.
+      required:
+        - id
+        - instructorId
+        - durationSlots
+        - requiredCapacity
+      properties:
+        id:
+          type: integer
+          format: uint32
+          description: Unique identifier for the course.
+          example: 1
+        instructorId:
+          type: integer
+          format: uint32
+          description: The ID of the instructor teaching the course.
+          example: 1
+        durationSlots:
+          type: integer
+          format: uint32
+          description: The number of consecutive time slots the course requires.
+          example: 2
+        requiredCapacity:
+          type: integer
+          format: uint32
+          description: The minimum room capacity required for the course.
+          example: 40
+
+    Instructor:
+      type: object
+      description: Represents an instructor with their scheduling constraints.
+      required:
+        - id
+        - unavailableSlots
+      properties:
+        id:
+          type: integer
+          format: uint32
+          description: Unique identifier for the instructor.
+          example: 1
+        unavailableSlots:
+          type: array
+          description: A list of time slots during which the instructor is unavailable.
+          items:
+            type: integer
+            format: uint32
+          example: [4, 5]
+
+    # --- Response Schemas ---
+    SchedulingOutput:
+      type: object
+      description: The final output of the solver, containing the schedule and metadata.
+      required:
+        - assignments
+        - score
+        - unmetSoftConstraints
+      properties:
+        assignments:
+          type: array
+          description: The list of scheduled course assignments.
+          items:
+            $ref: '#/components/schemas/Assignment'
+        score:
+          type: integer
+          format: int32
+          description: A score indicating the quality of the solution. A higher score is better.
+          example: 5
+        unmetSoftConstraints:
+          type: array
+          description: A list of soft constraints that were not satisfied in the final schedule.
+          items:
+            $ref: '#/components/schemas/UnmetSoftConstraint'
+
+    Assignment:
+      type: object
+      description: Represents a single, scheduled course assignment.
+      required:
+        - courseId
+        - roomId
+        - startSlot
+      properties:
+        courseId:
+          type: integer
+          format: uint32
+          description: The ID of the scheduled course.
+          example: 1
+        roomId:
+          type: integer
+          format: uint32
+          description: The ID of the room where the course is scheduled.
+          example: 101
+        startSlot:
+          type: integer
+          format: uint32
+          description: The starting time slot for the course.
+          example: 0
+
+    UnmetSoftConstraint:
+      type: object
+      description: Describes a soft constraint that was not met in the final schedule.
+      required:
+        - constraintType
+        - description
+      properties:
+        constraintType:
+          type: string
+          description: The type or name of the constraint that was violated.
+          example: "Avoid Back-to-Back Classes"
+        description:
+          type: string
+          description: A human-readable description of the specific violation.
+          example: "Instructor 1 has back-to-back classes: Course 1 (ends at slot 2) and Course 7 (starts at slot 2)."
