@@ -103,7 +103,7 @@ Memory usage is primarily driven by the ILP solver's need to store the constrain
 - The ILP approach involves a greater number of dependencies and involves some additional effort in setting up. However, `good_lp`, `HiGHS_sys`, and `HiGHS` are all well-documented and maintained, reducing the amount of effort that need be expended for future software maintenance.
 - The /solve endpoint is stateless, which simplifies the design but means that large problems must be solved synchronously.
 
-# Future Work (What I'd Do Next)
+# Future Work
 - Allow soft constraint preferences and weights to be passed in the API request body.
 - Provide for a greater range of soft constraints/ preferences. For example, allow instructors to select preferred hours on an individual basis, allow instructors to *prefer* back-to-back courses, etc.
 - Implement a job queue system. The API would immediately return a jobId, and the client could poll another endpoint for the result. This would help in the case that the supplied input is very large.

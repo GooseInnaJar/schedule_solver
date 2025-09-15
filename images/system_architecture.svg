@@ -1,0 +1,110 @@
+<svg width="423pt" height="438pt" viewBox="0.00 0.00 423.00 438.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 433.6)">
+<title>SystemArchitecture</title>
+<polygon fill="#fdfdfd" stroke="none" points="-4,4 -4,-433.6 419,-433.6 419,4 -4,4"/>
+<g id="clust1" class="cluster">
+<title>cluster_SolverLogic</title>
+<path fill="#bbbbbb" stroke="#bbbbbb" d="M20,-8C20,-8 395,-8 395,-8 401,-8 407,-14 407,-20 407,-20 407,-197.2 407,-197.2 407,-203.2 401,-209.2 395,-209.2 395,-209.2 20,-209.2 20,-209.2 14,-209.2 8,-203.2 8,-197.2 8,-197.2 8,-20 8,-20 8,-14 14,-8 20,-8"/>
+<text xml:space="preserve" text-anchor="middle" x="49.02" y="-194.4" font-family="Helvetica,sans-Serif" font-size="12.00">Solver Logic</text>
+</g>
+<!-- A -->
+<g id="node1" class="node">
+<title>A</title>
+<polygon fill="#ddeeff" stroke="#444444" points="233.67,-429.6 144.33,-429.6 144.33,-425.6 140.33,-425.6 140.33,-421.6 144.33,-421.6 144.33,-401.6 140.33,-401.6 140.33,-397.6 144.33,-397.6 144.33,-393.6 233.67,-393.6 233.67,-429.6"/>
+<polyline fill="none" stroke="#444444" points="144.33,-425.6 148.33,-425.6 148.33,-421.6 144.33,-421.6"/>
+<polyline fill="none" stroke="#444444" points="144.33,-401.6 148.33,-401.6 148.33,-397.6 144.33,-397.6"/>
+<text xml:space="preserve" text-anchor="middle" x="189" y="-414.6" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#333333">HTTP Client/API</text>
+<text xml:space="preserve" text-anchor="middle" x="189" y="-402.6" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#333333">(curl, UI, etc.)</text>
+</g>
+<!-- B -->
+<g id="node2" class="node">
+<title>B</title>
+<path fill="#ddeeff" stroke="#444444" d="M225.57,-300C225.57,-300 152.43,-300 152.43,-300 146.43,-300 140.43,-294 140.43,-288 140.43,-288 140.43,-276 140.43,-276 140.43,-270 146.43,-264 152.43,-264 152.43,-264 225.57,-264 225.57,-264 231.57,-264 237.57,-270 237.57,-276 237.57,-276 237.57,-288 237.57,-288 237.57,-294 231.57,-300 225.57,-300"/>
+<text xml:space="preserve" text-anchor="middle" x="189" y="-285" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#333333">Axum Web Server</text>
+<text xml:space="preserve" text-anchor="middle" x="189" y="-273" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#333333">(server.rs)</text>
+</g>
+<!-- A&#45;&gt;B -->
+<g id="edge1" class="edge">
+<title>A-&gt;B</title>
+<path fill="none" stroke="#666666" d="M143.96,-395.85C126.2,-387.57 107.63,-375.26 97.45,-357.6 84.94,-335.9 105.22,-317.92 129.84,-305.06"/>
+<polygon fill="#666666" stroke="#666666" points="131.36,-308.21 138.83,-300.69 128.31,-301.91 131.36,-308.21"/>
+<text xml:space="preserve" text-anchor="middle" x="149.23" y="-349.5" font-family="Helvetica,sans-Serif" font-size="9.00" fill="#555555"> POST /v1/schedule/solve</text>
+<text xml:space="preserve" text-anchor="middle" x="149.23" y="-338.7" font-family="Helvetica,sans-Serif" font-size="9.00" fill="#555555"> SchedulingInput (JSON)</text>
+</g>
+<!-- B&#45;&gt;A -->
+<g id="edge7" class="edge">
+<title>B-&gt;A</title>
+<path fill="none" stroke="#666666" d="M198.13,-300.12C203.01,-310.24 208.51,-323.49 211,-336 214.18,-351.93 209.51,-369.37 203.66,-383.38"/>
+<polygon fill="#666666" stroke="#666666" points="199.59,-392.23 199.68,-381.26 201.17,-388.8 203.77,-383.15 203.77,-383.15 203.77,-383.15 201.17,-388.8 207.86,-385.03 199.59,-392.23"/>
+<text xml:space="preserve" text-anchor="middle" x="265.3" y="-344.1" font-family="Helvetica,sans-Serif" font-size="9.00" fill="#555555"> SchedulingOutput (JSON)</text>
+</g>
+<!-- C -->
+<g id="node3" class="node">
+<title>C</title>
+<path fill="#e4f2e4" stroke="#444444" d="M216.96,-178.8C216.96,-178.8 161.04,-178.8 161.04,-178.8 155.04,-178.8 149.04,-172.8 149.04,-166.8 149.04,-166.8 149.04,-154.8 149.04,-154.8 149.04,-148.8 155.04,-142.8 161.04,-142.8 161.04,-142.8 216.96,-142.8 216.96,-142.8 222.96,-142.8 228.96,-148.8 228.96,-154.8 228.96,-154.8 228.96,-166.8 228.96,-166.8 228.96,-172.8 222.96,-178.8 216.96,-178.8"/>
+<text xml:space="preserve" text-anchor="middle" x="189" y="-163.8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#333333">Solver Module</text>
+<text xml:space="preserve" text-anchor="middle" x="189" y="-151.8" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#333333">(server.rs)</text>
+</g>
+<!-- B&#45;&gt;C -->
+<g id="edge2" class="edge">
+<title>B-&gt;C</title>
+<path fill="none" stroke="#666666" d="M150.46,-263.73C136.14,-255.18 121.45,-243.35 113.47,-228 103.98,-209.74 119.3,-194.24 138.57,-182.84"/>
+<polygon fill="#666666" stroke="#666666" points="140.12,-185.98 147.25,-178.14 136.79,-179.83 140.12,-185.98"/>
+<text xml:space="preserve" text-anchor="middle" x="149.24" y="-219.9" font-family="Helvetica,sans-Serif" font-size="9.00" fill="#555555"> Calls solve(input)</text>
+</g>
+<!-- C&#45;&gt;B -->
+<g id="edge6" class="edge">
+<title>C-&gt;B</title>
+<path fill="none" stroke="#666666" d="M191.98,-179.2C193.92,-192.54 195.94,-211.41 195,-228 194.54,-236.08 193.7,-244.81 192.79,-252.81"/>
+<polygon fill="#666666" stroke="#666666" points="191.58,-262.65 188.33,-252.17 192.04,-258.89 192.8,-252.72 192.8,-252.72 192.8,-252.72 192.04,-258.89 197.27,-253.27 191.58,-262.65"/>
+<text xml:space="preserve" text-anchor="middle" x="249.27" y="-219.9" font-family="Helvetica,sans-Serif" font-size="9.00" fill="#555555"> Returns SchedulingOutput</text>
+</g>
+<!-- D -->
+<g id="node4" class="node">
+<title>D</title>
+<polygon fill="#f7f7f0" stroke="#444444" points="95.74,-56 16.26,-56 16.26,-20 101.74,-20 101.74,-50 95.74,-56"/>
+<polyline fill="none" stroke="#444444" points="95.74,-56 95.74,-50"/>
+<polyline fill="none" stroke="#444444" points="101.74,-50 95.74,-50"/>
+<text xml:space="preserve" text-anchor="middle" x="59" y="-41" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#333333">Data Structures</text>
+<text xml:space="preserve" text-anchor="middle" x="59" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#333333">(data.rs)</text>
+</g>
+<!-- C&#45;&gt;D -->
+<g id="edge3" class="edge">
+<title>C-&gt;D</title>
+<path fill="none" stroke="#666666" d="M160.09,-142.48C145.24,-132.9 127.3,-120.23 112.99,-106.8 99.75,-94.37 86.99,-78.59 77.2,-65.38"/>
+<polygon fill="#666666" stroke="#666666" points="80.22,-63.58 71.53,-57.53 74.55,-67.68 80.22,-63.58"/>
+<text xml:space="preserve" text-anchor="middle" x="139" y="-98.7" font-family="Helvetica,sans-Serif" font-size="9.00" fill="#555555"> Uses structs</text>
+</g>
+<!-- E -->
+<g id="node5" class="node">
+<title>E</title>
+<path fill="#f7f7f0" stroke="#444444" d="M242.63,-56C242.63,-58.21 223.97,-60 201,-60 178.03,-60 159.37,-58.21 159.37,-56 159.37,-56 159.37,-20 159.37,-20 159.37,-17.79 178.03,-16 201,-16 223.97,-16 242.63,-17.79 242.63,-20 242.63,-20 242.63,-56 242.63,-56"/>
+<path fill="none" stroke="#444444" d="M242.63,-56C242.63,-53.79 223.97,-52 201,-52 178.03,-52 159.37,-53.79 159.37,-56"/>
+<text xml:space="preserve" text-anchor="middle" x="201" y="-41" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#333333">HiGHs Solver</text>
+<text xml:space="preserve" text-anchor="middle" x="201" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#333333">(good_lp crate)</text>
+</g>
+<!-- C&#45;&gt;E -->
+<g id="edge4" class="edge">
+<title>C-&gt;E</title>
+<path fill="none" stroke="#666666" d="M183.81,-142.41C180.66,-129.55 177.74,-111.63 180.47,-96 181.91,-87.76 184.43,-79.14 187.23,-71.17"/>
+<polygon fill="#666666" stroke="#666666" points="190.49,-72.45 190.75,-61.86 183.94,-69.98 190.49,-72.45"/>
+<text xml:space="preserve" text-anchor="middle" x="213.73" y="-98.7" font-family="Helvetica,sans-Serif" font-size="9.00" fill="#555555"> ILP optimization</text>
+</g>
+<!-- F -->
+<g id="node6" class="node">
+<title>F</title>
+<polygon fill="#f7f7f0" stroke="#444444" points="379.19,-56 300.81,-56 300.81,-20 385.19,-20 385.19,-50 379.19,-56"/>
+<polyline fill="none" stroke="#444444" points="379.19,-56 379.19,-50"/>
+<polyline fill="none" stroke="#444444" points="385.19,-50 379.19,-50"/>
+<text xml:space="preserve" text-anchor="middle" x="343" y="-41" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#333333">Logging/Timing</text>
+<text xml:space="preserve" text-anchor="middle" x="343" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#333333">(tracing, etc.)</text>
+</g>
+<!-- C&#45;&gt;F -->
+<g id="edge5" class="edge">
+<title>C-&gt;F</title>
+<path fill="none" stroke="#666666" d="M211.38,-142.41C224.66,-132.08 241.8,-118.71 257,-106.8 275.43,-92.35 296.04,-76.11 312.46,-63.14"/>
+<polygon fill="#666666" stroke="#666666" points="314.25,-66.19 319.92,-57.25 309.91,-60.7 314.25,-66.19"/>
+<text xml:space="preserve" text-anchor="middle" x="308.74" y="-98.7" font-family="Helvetica,sans-Serif" font-size="9.00" fill="#555555"> Logs events, timing</text>
+</g>
+</g>
+</svg>
