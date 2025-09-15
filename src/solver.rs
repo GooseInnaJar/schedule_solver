@@ -117,7 +117,7 @@ pub fn solve(input: &SchedulingInput) -> Result<SchedulingOutput, String> {
         .maximise(objective)
         .using(default_solver)
         .set_option("threads", 1) // limit to 1 thread for reproducibility
-        .set_option("random_seed", 1234) // set seed for reproducibility
+        .set_option("random_seed", 1234) //set seed for reproducibility
         .set_option("log_to_console", "true");
     // begin hard constraints
 
