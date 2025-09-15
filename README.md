@@ -112,4 +112,4 @@ Memory usage is primarily driven by the ILP solver's need to store the constrain
 
 ### Project Schematic
 
-![System Architecture Diagram](./images/system-architecture.svg)
+![System Architecture Diagram](./images/system_architecture.svg)
