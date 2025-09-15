@@ -100,7 +100,7 @@ pub fn solve(input: &SchedulingInput) -> Result<SchedulingOutput, String> {
     let morning_preference_weight = 1.0;
     let back_to_back_penalty_weight = 0.5;
 
-    let morning_cutoff = input.total_timeslots / 2; //assume morining is from 6-12 out of assumed 12 slots
+    let morning_cutoff = input.total_timeslots / 2; //assume morining is from 0-5 out of assumed 12 slots
     let morning_score: Expression = assignment_vars_map
         .iter()
         .filter(|((_, _, start_slot), _)| *start_slot < morning_cutoff)
