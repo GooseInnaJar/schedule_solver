@@ -87,7 +87,7 @@ Memory usage is primarily driven by the ILP solver's need to store the constrain
 # Assumptions and Trade-offs
 
 **Assumptions:**
-
+- Scheduling is performed for one day only. 
 - All timeslots are discrete and of equal duration.
 - There are 12 timeslots; this value is hardcoded.
 - Travel time between rooms for instructors or students is zero.
@@ -99,7 +99,7 @@ Memory usage is primarily driven by the ILP solver's need to store the constrain
 **Trade-offs:**
 
 - This implementationg of the university scheduling problem is simplified and is mainly intended to presented as a proof of concept.
-- The ILP approach guarantees an optimal solution for the given objective function, whereas heuristic methods (like a greedy algorithm) would be faster but provide no guarantee of optimality. I chose optimality for this project's scope.
+- The ILP approach guarantees an optimal solution for the given objective function, whereas heuristic methods (like a greedy algorithm) would be faster but provide no guarantee of optimality. 
 - The ILP approach involves a greater number of dependencies and involves some additional effort in setting up. However, `good_lp`, `HiGHS_sys`, and `HiGHS` are all well-documented and maintained, reducing the amount of effort that need be expended for future software maintenance.
 - The /solve endpoint is stateless, which simplifies the design but means that large problems must be solved synchronously.
 
